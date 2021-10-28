@@ -6,7 +6,7 @@
 	},
 	"item": [
 		{
-			"name": "Eureka",
+			"name": "eureka",
 			"item": [
 				{
 					"name": "Registred apps",
@@ -22,6 +22,62 @@
 							"path": [
 								"eureka",
 								"apps"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "ribastore-delivery",
+			"item": [
+				{
+					"name": "delivery",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"pedidoId\" : 1,\r\n\t\r\n\t\"dataDaEntrega\" : null,\r\n\t\r\n\t\"nomeDoPersonagem\" : \"Teste\",\r\n\t\r\n\t\"mundoPersonagem\" : \"Mundo Teste\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}:8083/delivery",
+							"host": [
+								"{{host}}"
+							],
+							"port": "8083",
+							"path": [
+								"delivery"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "config",
+			"item": [
+				{
+					"name": "config",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}:8888/delivery/default",
+							"host": [
+								"{{host}}"
+							],
+							"port": "8888",
+							"path": [
+								"delivery",
+								"default"
 							]
 						}
 					},
