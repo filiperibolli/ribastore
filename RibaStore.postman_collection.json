@@ -1,0 +1,33 @@
+{
+	"info": {
+		"_postman_id": "d1f692e4-eaed-4e96-b839-c33555360745",
+		"name": "RibaStore",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Eureka",
+			"item": [
+				{
+					"name": "Registred apps",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}:8761/eureka/apps",
+							"host": [
+								"{{host}}"
+							],
+							"port": "8761",
+							"path": [
+								"eureka",
+								"apps"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
