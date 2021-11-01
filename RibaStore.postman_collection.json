@@ -30,6 +30,87 @@
 			]
 		},
 		{
+			"name": "config",
+			"item": [
+				{
+					"name": "config",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}:8888/delivery/default",
+							"host": [
+								"{{host}}"
+							],
+							"port": "8888",
+							"path": [
+								"delivery",
+								"default"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "authentication",
+			"item": [
+				{
+					"name": "Autheticate",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "{{ribastore-pwd}}",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "{{ribastore-login}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{host}}:8088/oauth/token?scope=web&grant_type=password&username=ribolli&password=ribollipwd",
+							"host": [
+								"{{host}}"
+							],
+							"port": "8088",
+							"path": [
+								"oauth",
+								"token"
+							],
+							"query": [
+								{
+									"key": "scope",
+									"value": "web"
+								},
+								{
+									"key": "grant_type",
+									"value": "password"
+								},
+								{
+									"key": "username",
+									"value": "ribolli"
+								},
+								{
+									"key": "password",
+									"value": "ribollipwd"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
 			"name": "ribastore-delivery",
 			"item": [
 				{
@@ -62,22 +143,86 @@
 			]
 		},
 		{
-			"name": "config",
+			"name": "ribastore-estoque",
 			"item": [
 				{
-					"name": "config",
+					"name": "Estoque geral",
 					"request": {
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{host}}:8888/delivery/default",
+							"raw": "{{host}}:8081/estoque",
 							"host": [
 								"{{host}}"
 							],
-							"port": "8888",
+							"port": "8081",
 							"path": [
-								"delivery",
-								"default"
+								"estoque"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Estoque por jogo",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}:8081/estoque/tibia",
+							"host": [
+								"{{host}}"
+							],
+							"port": "8081",
+							"path": [
+								"estoque",
+								"tibia"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Pedido por id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}:8081/pedido/1",
+							"host": [
+								"{{host}}"
+							],
+							"port": "8081",
+							"path": [
+								"pedido",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Realiza pedido",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[\r\n    {\r\n        \"id\" : 1,\r\n        \"quantidade\" : 100\r\n    }\r\n]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}:8081/pedido",
+							"host": [
+								"{{host}}"
+							],
+							"port": "8081",
+							"path": [
+								"pedido"
 							]
 						}
 					},
