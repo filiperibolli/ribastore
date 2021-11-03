@@ -289,6 +289,49 @@
 					"response": []
 				}
 			]
+		},
+		{
+			"name": "api-gateway",
+			"item": [
+				{
+					"name": "routes",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}:5555/actuator/routes",
+							"host": [
+								"{{host}}"
+							],
+							"port": "5555",
+							"path": [
+								"actuator",
+								"routes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "exemplo chamada api",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}:5555/estoque/estoque",
+							"host": [
+								"{{host}}"
+							],
+							"port": "5555",
+							"path": [
+								"estoque",
+								"estoque"
+							]
+						}
+					},
+					"response": []
+				}
+			]
 		}
 	]
 }

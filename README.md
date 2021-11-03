@@ -10,7 +10,6 @@ Sistema de loja de coins(Moeda do jogo 'Tibia') com arquitetura de microservicos
 <p> spring-cloud-starter-netflix-hystrix -> administra os erros e fallbacks tanto quanto o bulkhead e threads</p>
 <p> spring-boot-starter-security -> Administra a autenticacao entre a comunicacao dos servicos
 <p> spring-cloud-starter-oauth2 -> Protocolo utlizado de autenticacao com server
-
 <p> lombok -> utilizado para genrenciamento dos dto's </p>
  
 <h3> ribastore-delivery - Sistema de entrega de pedido  </h3>
@@ -31,7 +30,7 @@ Sistema de loja de coins(Moeda do jogo 'Tibia') com arquitetura de microservicos
 
 <h3> eureka - Netflix server descovery </h3>
 
-<p> Integracao de microservicos e loadbalancer utilizando 'EUREKA' (Service discovery) e 'Ribbon'(Load balancer).</p>
+<p> spring-cloud-starter-netflix-eureka-server -> Integracao de microservicos e loadbalancer utilizando 'EUREKA' (Service discovery) e 'Ribbon'(Load balancer).</p>
 
  
 <h3>configuration - Servico responsavel pelo gerenciamento de configuracoes do ecosistema RibaStore  </h3>
@@ -43,3 +42,8 @@ Sistema de loja de coins(Moeda do jogo 'Tibia') com arquitetura de microservicos
  
 <p> spring-boot-starter-security -> Administra a autenticacao entre a comunicacao dos servicos
 <p> spring-cloud-starter-oauth2 -> Protocolo utlizado de autenticacao com server
+
+<h3>apigateway-zuul - servico de api gateway (proxy) utilizando Spring zuul </h3>
+
+<p> spring-cloud-starter-netflix-zuul -> api gateway Spring zuul implementado para facilitar as chamadas backend e execucao do proxy</p>
+<p> spring-cloud-starter-netflix-eureka-client -> integrado com o zuul faz com que essa funcionalidade funcione quase que sozinha </p>
