@@ -10,7 +10,7 @@ import com.ribastore.delivery.dto.DeliveryDTO;
 import com.ribastore.delivery.service.DeliveryService;
 
 @RestController
-@RequestMapping("/delivery")
+@RequestMapping("delivery")
 public class DeliveryController {
 
 	@Autowired

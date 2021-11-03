@@ -64,12 +64,12 @@
 							"basic": [
 								{
 									"key": "password",
-									"value": "{{ribastore-pwd}}",
+									"value": "storepwd",
 									"type": "string"
 								},
 								{
 									"key": "username",
-									"value": "{{ribastore-login}}",
+									"value": "ribastore-loja",
 									"type": "string"
 								}
 							]
@@ -111,11 +111,56 @@
 			]
 		},
 		{
+			"name": "ribastore-loja",
+			"item": [
+				{
+					"name": "compra",
+					"request": {
+						"auth": {
+							"type": "oauth2",
+							"oauth2": [
+								{
+									"key": "addTokenTo",
+									"value": "header",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"itens\": [\r\n        {\r\n            \"id\": 1,\r\n            \"quantidade\": 100\r\n        }\r\n    ],\r\n    \"nomeDoPersonagem\": \"Riba Edena Ruh\",\r\n    \"mundoPersonagem\": \"Pacera\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}:8080/compra",
+							"host": [
+								"{{host}}"
+							],
+							"port": "8080",
+							"path": [
+								"compra"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
 			"name": "ribastore-delivery",
 			"item": [
 				{
 					"name": "delivery",
 					"request": {
+						"auth": {
+							"type": "noauth"
+						},
 						"method": "POST",
 						"header": [],
 						"body": {
@@ -204,6 +249,21 @@
 				{
 					"name": "Realiza pedido",
 					"request": {
+						"auth": {
+							"type": "oauth2",
+							"oauth2": [
+								{
+									"key": "tokenType",
+									"value": "",
+									"type": "string"
+								},
+								{
+									"key": "addTokenTo",
+									"value": "header",
+									"type": "string"
+								}
+							]
+						},
 						"method": "POST",
 						"header": [],
 						"body": {

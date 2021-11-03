@@ -1,6 +1,17 @@
 <h1> RibaStore </h3>
 Sistema de loja de coins(Moeda do jogo 'Tibia') com arquitetura de microservicos  
 
+
+<h3> ribastore-loja - Microservico responsavel por realizar a compra </h3>
+
+<p> spring-cloud-starter-config -> utilizando sistema de configuracao em nuvem </p>
+<p> spring-cloud-starter-netflix-eureka-client -> registrando o servico no EUREKA </p>
+<p> spring-cloud-starter-openfeign -> realiza a comunicacao entre os microservicos </p>
+<p> spring-cloud-starter-netflix-hystrix -> administra os erros e fallbacks tanto quanto o bulkhead e threads</p>
+<p> spring-boot-starter-security -> Administra a autenticacao entre a comunicacao dos servicos
+<p> spring-cloud-starter-oauth2 -> Protocolo utlizado de autenticacao com server
+
+<p> lombok -> utilizado para genrenciamento dos dto's </p>
  
 <h3> ribastore-delivery - Sistema de entrega de pedido  </h3>
 

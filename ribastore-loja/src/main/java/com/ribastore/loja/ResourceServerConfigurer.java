@@ -1,4 +1,4 @@
-package com.ribastore.estoque;
+package com.ribastore.loja;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
@@ -11,7 +11,7 @@ public class ResourceServerConfigurer extends ResourceServerConfigurerAdapter{
 	@Override
 	public void configure(HttpSecurity http) throws Exception {
 		http.authorizeRequests()
-			.antMatchers(HttpMethod.POST, "/pedido")
+			.antMatchers(HttpMethod.POST, "/compra")
 			.hasRole("USER");
 	}
 }

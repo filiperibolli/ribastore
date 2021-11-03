@@ -9,4 +9,4 @@ spring:
             enabled: false
         git:
           uri: https://github.com/filiperibolli/ribastore-config/
-          search-paths: delivery, estoque
+          search-paths: delivery, estoque, loja
