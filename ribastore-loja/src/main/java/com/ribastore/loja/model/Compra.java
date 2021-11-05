@@ -11,10 +11,14 @@ import javax.persistence.Id;
 
 import com.ribastore.loja.enumerate.CompraState;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
 @Entity
+@AllArgsConstructor
+@NoArgsConstructor
 public class Compra {
 
 	@Id

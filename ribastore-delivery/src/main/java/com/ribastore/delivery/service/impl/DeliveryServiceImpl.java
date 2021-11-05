@@ -23,7 +23,7 @@ public class DeliveryServiceImpl implements DeliveryService {
 		entrega.setNomeDoPersonagem(deliveryDTO.getNomeDoPersonagem());
 		entrega.setMundoPersonagem(deliveryDTO.getMundoPersonagem());
 		
-		repository.save(entrega);
+		entrega = repository.save(entrega);
 		
 		return entrega.getId();
 	}

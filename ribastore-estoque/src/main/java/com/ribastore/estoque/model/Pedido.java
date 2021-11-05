@@ -14,10 +14,14 @@ import javax.persistence.OneToMany;
 
 import com.ribastore.estoque.enumerate.PedidoStatus;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Entity
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class Pedido {
 
 	@Id
@@ -34,8 +38,5 @@ public class Pedido {
 	public Pedido(List<PedidoItem> itens) {
 		this.itens = itens;
 		this.status = PedidoStatus.RECEBIDO;
-	}
-	
-	public Pedido() {
 	}
 }

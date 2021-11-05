@@ -47,3 +47,9 @@ Sistema de loja de coins(Moeda do jogo 'Tibia') com arquitetura de microservicos
 
 <p> spring-cloud-starter-netflix-zuul -> api gateway Spring zuul implementado para facilitar as chamadas backend e execucao do proxy</p>
 <p> spring-cloud-starter-netflix-eureka-client -> integrado com o zuul faz com que essa funcionalidade funcione quase que sozinha </p>
+
+
+<h3> Pontos em melhoria </h3>
+
+<p> Aumentar % de cobertura de testes </p>
+<p> Fluxo de fallBack de reprocessar e cancelar compra </p>
