@@ -16,12 +16,14 @@ import org.springframework.web.client.RestTemplate;
 import feign.Logger;
 import feign.RequestInterceptor;
 import feign.RequestTemplate;
+import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 @SpringBootApplication
 @EnableFeignClients
 @EnableCircuitBreaker
 @EnableScheduling
 @EnableResourceServer
+@EnableSwagger2
 public class RibastoreLojaApplication {
 
 	@Bean
