@@ -1,8 +1,6 @@
 spring:
   application:
     name: 'delivery'
-  profiles:
-    active: ${PROFILE}
   cloud:
     config:
       uri: http://${CONFIG_HOST}:8888
