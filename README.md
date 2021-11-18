@@ -71,6 +71,7 @@ Sistema de loja de coins(Moeda do jogo 'Tibia') com arquitetura de microservicos
 <p> Docker run -d --network ribastore --name configuration -p 8888:8888 ribolli1/configuration </p>
 <p> Docker -> Docker build -t ribolli1/eureka . </p>
 <p> Docker run -d --name eureka -p 8761:8761 --network ribastore ribolli1/eureka</p>
+<p> Docker build -t ribolli1/ribastore-estoque . </p>
 
 
 <h3> Pontos em melhoria </h3>

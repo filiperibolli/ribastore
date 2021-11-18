@@ -1,8 +1,10 @@
 spring:
   application:
     name: 'estoque'
-  profiles:
-    active: default
   cloud:
     config:
-      uri: http://localhost:8888
+      uri: http://${CONFIG_HOST}:8888
+      fail-fast: true
+      retry:
+        max-interval: 10000
+        max-attempts: 2000

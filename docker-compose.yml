@@ -1,52 +1,100 @@
 
 version: "3"
 services:
-  eureka:
-    build:
-      context: ./eureka/
-      dockerfile: Dockerfile
-    networks:
-      - ribastore-network
-    ports:
-      - "8761:8761"
-  configuration:
-    build:
-      context: ./configuration/
-      dockerfile: Dockerfile
-    networks:
-      - ribastore-network
-    ports:
-      - "8888:8888"
-  mysql-delivery:
-    image: mysql:8
-    networks:
-      - ribastore-network
-    restart: always
-    environment:
-      - MYSQL_ROOT_PASSWORD=root
-      - MYSQL_DATABASE=delivery
-    ports:
-      - "3306:3306"
-  delivery:
-    build:
-      context: ./ribastore-delivery/
-      dockerfile: Dockerfile
-    networks:
-      - ribastore-network
-    environment:
-      - CONFIG_HOST=configuration
-      - SPRING_PROFILES_ACTIVE=docker
-    ports:
-      - "8083:8083"
-    restart: on-failure
-    depends_on:
-      - mysql-delivery
-      - configuration
-      - eureka
-    links:
-      - mysql-delivery
-      - configuration
-      - eureka
+    eureka:
+        build:
+          context: ./eureka/
+          dockerfile: Dockerfile
+        networks:
+          - ribastore-network
+        ports:
+          - "8761:8761"
+    configuration:
+        build:
+          context: ./configuration/
+          dockerfile: Dockerfile
+        networks:
+          - ribastore-network
+        ports:
+          - "8888:8888"
+    authentication:
+        build:
+          context: ./authentication/
+          dockerfile: Dockerfile
+        networks:
+          - ribastore-network
+        ports:
+          - "8088:8088"
+    mysql-delivery:
+        image: mysql:8
+        networks:
+          - ribastore-network
+        restart: always
+        environment:
+          - MYSQL_ROOT_PASSWORD=root
+          - MYSQL_DATABASE=delivery
+        ports:
+          - "3306:3306"
+    delivery:
+        build:
+          context: ./ribastore-delivery/
+          dockerfile: Dockerfile
+        networks:
+          - ribastore-network
+        environment:
+          - CONFIG_HOST=configuration
+          - EUREKA_HOST=eureka
+          - SPRING_PROFILES_ACTIVE=docker
+        ports:
+          - "8083:8083"
+        restart: on-failure
+        depends_on:
+          - mysql-delivery
+            - condition=service_healthy
+          - configuration
+            - condition=service_healthy
+          - eureka
+        links:
+          - mysql-delivery
+          - configuration
+          - eureka
+    mysql-estoque:
+        image: mysql:8
+        networks:
+          - ribastore-network
+        restart: always
+        environment:
+          - MYSQL_ROOT_PASSWORD=root
+          - MYSQL_DATABASE=estoque
+        ports:
+          - "3307:3306"
+    estoque:
+        build:
+          context: ./ribastore-estoque/
+          dockerfile: Dockerfile
+        networks:
+          - ribastore-network
+        environment:
+          - CONFIG_HOST=configuration
+          - EUREKA_HOST=eureka
+          - OAUTH2_HOST=authentication
+          - SPRING_PROFILES_ACTIVE=docker
+        ports:
+          - "8081:8081"
+        restart: on-failure
+        depends_on:
+          - mysql-estoque
+            -condition=service_healthy
+          - configuration
+            -condition=service_healthy
+          - authentication
+          - eureka
+        links:
+          - mysql-delivery
+          - configuration
+          - authentication
+          - eureka
+  
 networks:
   ribastore-network:
     driver: bridge
