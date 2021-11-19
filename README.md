@@ -20,6 +20,15 @@ Sistema de loja de coins(Moeda do jogo 'Tibia') com arquitetura de microservicos
 <p> spring-cloud-starter-netflix-eureka-client -> registrando o servico no EUREKA </p>
 <p> lombok -> utilizado para genrenciamento dos dto's </p>
 <p> swagger -> auxilia a descrição, consumo e visualização de serviços http://{{host}}:{{port}}/swagger-ui.html/ </p>
+<p> docker -> aplicacao dockerizada </p>
+<p>spring-boot-starter-aop ->  responsavel pela integração do servidor de configuração na dockerizacao dos servicos</p>
+<p>org.springframework.retry -> responsavel pela integração do servidor de configuração na dockerizacao dos servicos</p>
+
+<p>Variaveis de ambiente para rodar testes: </p>
+<p>CONFIG_HOST=localhost </p>
+<p>EUREKA_HOST=eureka </p>
+<p>SPRING_PROFILES_ACTIVE=test </p>
+<p>Lembrando que podemos escolher entre os profiles default, docker e testes na hora de rodar a aplicacao local ou nos containers<p>
 
 
 <h3> ribastore-estoque - Servico responsavel pelo gerenciamento de pedidos e estoque  </h3>
@@ -31,30 +40,42 @@ Sistema de loja de coins(Moeda do jogo 'Tibia') com arquitetura de microservicos
 <p> spring-boot-starter-data-jpa -> Utilizacao nas consultas ao banco de dados dedicado
 <p> lombok -> utilizado para genrenciamento dos dto's </p>
 <p> swagger -> auxilia a descrição, consumo e visualização de serviços http://{{host}}:{{port}}/swagger-ui.html/ </p>
+<p> docker -> aplicacao dockerizada </p>
+<p> spring-boot-starter-aop ->  responsavel pela integração do servidor de configuração na dockerizacao dos servicos</p>
+<p> org.springframework.retry -> responsavel pela integração do servidor de configuração na dockerizacao dos servicos</p>
 
+<p>Variaveis de ambiente para rodar testes: </p>
+<p>CONFIG_HOST=localhost </p>
+<p>EUREKA_HOST=eureka </p>
+<p>OAUTH2_HOST=authentication </p>
+<p>SPRING_PROFILES_ACTIVE=test </p>
+<p>Lembrando que podemos escolher entre os profiles default, docker e testes na hora de rodar a aplicacao local ou nos containers<p>
 
 <h3> eureka - Netflix server descovery </h3>
 
 <p> spring-cloud-starter-netflix-eureka-server -> Integracao de microservicos e loadbalancer utilizando 'EUREKA' (Service discovery) e 'Ribbon'(Load balancer).</p>
+<p> docker -> aplicacao dockerizada </p>
 
  
 <h3>configuration - Servico responsavel pelo gerenciamento de configuracoes do ecosistema RibaStore  </h3>
 
 <p> spring-cloud-config-server -> tecnologia utilizada para gerenciar as configuracoes do sistema </p>
 <p> Configuracoes do projeto do em: https://github.com/filiperibolli/ribastore-config </p>
+<p> docker -> aplicacao dockerizada </p>
 
 
 <h3> authentication - Servico responsavel pelo controle de autenticacao OAUTH2 </h3>
  
 <p> spring-boot-starter-security -> Administra a autenticacao entre a comunicacao dos servicos </p>
 <p> spring-cloud-starter-oauth2 -> Protocolo utlizado de autenticacao com server </p>
+<p> docker -> aplicacao dockerizada </p>
 
 
 <h3>apigateway-zuul - servico de api gateway (proxy) utilizando Spring zuul </h3>
 
 <p> spring-cloud-starter-netflix-zuul -> api gateway Spring zuul implementado para facilitar as chamadas backend e execucao do proxy</p>
 <p> spring-cloud-starter-netflix-eureka-client -> integrado com o zuul faz com que essa funcionalidade funcione quase que sozinha </p>
-
+<p> docker -> aplicacao dockerizada </p>
 
 <h3> Docker compose </h3>
 

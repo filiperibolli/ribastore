@@ -1,0 +1,6 @@
+spring:
+  application:
+    name: 'estoque'
+  cloud:
+    config:
+      enabled: false

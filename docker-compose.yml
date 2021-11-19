@@ -25,14 +25,16 @@ services:
           - ribastore-network
         ports:
           - "8088:8088"
-    mysql-delivery:
+    mysql-ribastore:
         image: mysql:8
+        command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
         networks:
           - ribastore-network
         restart: always
+        volumes: 
+            - ./docker/provision/mysql/init:/docker-entrypoint-initdb.d
         environment:
-          - MYSQL_ROOT_PASSWORD=root
-          - MYSQL_DATABASE=delivery
+            - MYSQL_ROOT_PASSWORD=root
         ports:
           - "3306:3306"
     delivery:
@@ -49,25 +51,15 @@ services:
           - "8083:8083"
         restart: on-failure
         depends_on:
-          - mysql-delivery
+          - mysql-ribastore
             - condition=service_healthy
           - configuration
             - condition=service_healthy
           - eureka
         links:
-          - mysql-delivery
+          - mysql-ribastore
           - configuration
           - eureka
-    mysql-estoque:
-        image: mysql:8
-        networks:
-          - ribastore-network
-        restart: always
-        environment:
-          - MYSQL_ROOT_PASSWORD=root
-          - MYSQL_DATABASE=estoque
-        ports:
-          - "3307:3306"
     estoque:
         build:
           context: ./ribastore-estoque/
@@ -83,18 +75,17 @@ services:
           - "8081:8081"
         restart: on-failure
         depends_on:
-          - mysql-estoque
+          - mysql-ribastore
             -condition=service_healthy
           - configuration
             -condition=service_healthy
           - authentication
           - eureka
         links:
-          - mysql-delivery
+          - mysql-ribastore
           - configuration
           - authentication
           - eureka
-  
 networks:
   ribastore-network:
     driver: bridge

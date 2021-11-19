@@ -1,0 +1,6 @@
+spring:
+  application:
+    name: 'delivery'
+  cloud:
+    config:
+      enabled: false
