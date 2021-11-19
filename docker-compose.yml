@@ -86,6 +86,36 @@ services:
           - configuration
           - authentication
           - eureka
+    loja:
+        build:
+          context: ./ribastore-loja/
+          dockerfile: Dockerfile
+        networks:
+          - ribastore-network
+        environment:
+          - CONFIG_HOST=configuration
+          - EUREKA_HOST=eureka
+          - OAUTH2_HOST=authentication
+          - SPRING_PROFILES_ACTIVE=docker
+        ports:
+          - "8080:8080"
+        restart: on-failure
+        depends_on:
+          - mysql-ribastore
+            -condition=service_healthy
+          - configuration
+            -condition=service_healthy
+          - authentication
+          - eureka
+          - estoque
+          - delivery
+        links:
+          - mysql-ribastore
+          - configuration
+          - authentication
+          - eureka
+          - estoque
+          - delivery
 networks:
   ribastore-network:
     driver: bridge

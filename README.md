@@ -1,5 +1,5 @@
 <h1> RibaStore </h3>
-Sistema de loja de coins(Moeda do jogo 'Tibia') com arquitetura de microservicos  
+Sistema de loja de coins(Moeda do jogo 'Tibia') com arquitetura de microservicos dockerizada
 
 
 <h3> ribastore-loja - Microservico responsavel por realizar a compra </h3>
@@ -12,6 +12,13 @@ Sistema de loja de coins(Moeda do jogo 'Tibia') com arquitetura de microservicos
 <p> spring-cloud-starter-oauth2 -> Protocolo utlizado de autenticacao com server
 <p> lombok -> utilizado para genrenciamento dos dto's </p>
 <p> swagger -> auxilia a descrição, consumo e visualização de serviços http://{{host}}:{{port}}/swagger-ui.html/ </p>
+
+<p>Variaveis de ambiente para rodar testes: </p>
+<p>CONFIG_HOST=localhost </p>
+<p>EUREKA_HOST=eureka </p>
+<p>OAUTH2_HOST=authentication </p>
+<p>SPRING_PROFILES_ACTIVE=test </p>
+<p>Lembrando que podemos escolher entre os profiles default, docker e testes na hora de rodar a aplicacao local ou nos containers<p>
 
  
 <h3> ribastore-delivery - Sistema de entrega de pedido  </h3>
